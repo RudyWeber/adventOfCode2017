@@ -4,4 +4,7 @@
 npm-debug.log
 /lib/bs/
 /node_modules/
+/bin/
 *.js
+*.cmi
+*.cmo
