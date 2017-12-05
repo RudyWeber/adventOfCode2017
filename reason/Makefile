@@ -4,7 +4,12 @@ OCAML_DEPS=str.cma
 src=./src/native/
 bin=./bin/
 
-all: day2 day3 day4
+all: day2 day3 day4 day5
+
+day5: $(src)adventOfCode5.re | create_dir
+	@echo "Compiling $@"
+	@$(CC) $(OCAML_DEPS) $(REFMT) -o $(bin)$@ -impl $<
+	@cp $(src)day5input $(bin)
 
 day4: $(src)adventOfCode4.re | create_dir
 	@echo "Compiling $@"
