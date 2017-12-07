@@ -6,24 +6,10 @@ bin=./bin/
 
 all: day2 day3 day4 day5
 
-day5: $(src)adventOfCode5.re | create_dir
+day%: $(src)adventOfCode%.re | create_dir
 	@echo "Compiling $@"
 	@$(CC) $(OCAML_DEPS) $(REFMT) -o $(bin)$@ -impl $<
-	@cp $(src)day5input $(bin)
-
-day4: $(src)adventOfCode4.re | create_dir
-	@echo "Compiling $@"
-	@$(CC) $(OCAML_DEPS) $(REFMT) -o $(bin)$@ -impl $<
-	@cp $(src)day4input $(bin)
-
-day3: $(src)adventOfCode3.re | create_dir
-	@echo "Compiling $@"
-	@$(CC) $(OCAML_DEPS) $(REFMT) -o $(bin)$@ -impl $<
-
-day2: $(src)adventOfCode2.re | create_dir
-	@echo "Compiling $@"
-	@$(CC) $(OCAML_DEPS) $(REFMT) -o $(bin)$@ -impl $<
-	@cp $(src)day2input $(bin)
+	@cp $(src)day$*input $(bin) 2>/dev/null || exit 0
 
 create_dir:
 	@mkdir -p $(bin)
